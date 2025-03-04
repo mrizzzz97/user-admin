@@ -1,7 +1,12 @@
-protected function authenticated(Request $request, $user)
+namespace App\Http\Controllers\Auth;
+
+class LoginController extends Controller
 {
-    if ($user->isAdmin()) {
-        return redirect()->route('admin.dashboard');
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('home');
     }
-    return redirect()->route('home');
 }
